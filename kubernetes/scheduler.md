@@ -154,7 +154,7 @@ There are three types of taints that can be applied.
 * PreferNoSchedule, which means that it does not schedule new pods unless there is no other option. 
 * NoExecute means that it migrates all pods away from this node, unless it has a toleration, of course. 
 
-** if the pod has a toleration, it will ignore the taint because that is what it's all about. ** 
+**if the pod has a toleration, it will ignore the taint because that is what it's all about.** 
 
 #### taint example;
 
