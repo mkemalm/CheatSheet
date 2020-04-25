@@ -18,7 +18,7 @@
 ## Deployments
 
 * replica sets are created after deployments and are responsible for scale of pods.
-* `kubernetes get all` --> shows pods, deployments, services, replicasets
+* `kubernetes get all` [--> shows pods, deployments, services, replicasets
 -kubectl create deployment --dry-run --image=nginx --output=yaml XXX --> creates a deployment yaml example
 -kubectl scale deployment --replicas=X --> scales out deployment to 3 copies
 -kubectl edit deployment.apps XXXX --> edit in vi mode
