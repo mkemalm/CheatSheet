@@ -149,5 +149,59 @@ spec:
 * Taints and toleration are used to ensure pods are not scheduled on inappropriate nodes, and just make sure that the dedicated nodes can be configured for dedicated tasks. 
 * Taints and tolerations have no effect daemonsets
 
-graph TD
-    Start --> Stop
+There are three types of taints that can be applied. 
+* NoSchedule, which means it does not schedule new pods. 
+* PreferNoSchedule, which means that it does not schedule new pods unless there is no other option. 
+* NoExecute means that it migrates all pods away from this node, unless it has a toleration, of course. 
+
+** if the pod has a toleration, it will ignore the taint because that is what it's all about. ** 
+
+#### taint example;
+
+assume that there are 3 worker nodes.
+
+`kubectl taint nodes node_name example-key:NoSchedule` --> create a taint on a node
+`kubectl create deployment deployment_name --image=nginx`
+`kubectl scale deployment deployment_name --replica=3`--> scales deployment to 3
+`kubectl get pods -o wide --selector app=nginx-taint` --> this will show that app is not scheduled on tainted node
+`kubectl taint nodes node_name example-key:NoSchedule-` --> removes taint
+
+#### toleration example;
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-toleration
+  labels: 
+    env: test
+spec:
+  containers:
+  - name: nginx-toleration
+    image: nginx
+    imagePullPolicy: IfNotPresent
+  tolerations:
+  - key: "example-key"
+    operator: "Exists"
+    effect: "NoSchedule"
+```
+
+## Resource Restriction
+
+* scheduler is responsible also for resource allocation to pods
+
+```
+...
+spec:
+      containers:
+      - name: php-redis
+        image: gcr.io/google_samples/gb-frontend:v3
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+```
+
+## Additional
+
+`kubectl cordon node_name`--> node is not schedulable for new pods but current pods are not affected
