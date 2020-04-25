@@ -36,7 +36,7 @@ Get update strategy of deployment;
 * `kubectl rolout history deployment` --> shows rollout history of deployments
 * `kubectl --record deployment.apps/nginx-deployment set image deployment.v1.apps/nginx-deployment nginx=nginx:1.16.1` --> records detailed history
 
-## Init Containers
+## Init Containers
 
 * initContainers spec is used.
 * if initContainers spec is met containers part is executed in yaml.
@@ -69,7 +69,7 @@ spec:
 	* ordered automated rolling updates
 	* storage must be provisioned by persistentvolume
 
-## Daemonset
+## Daemonset
 
 * ensures all nodes are running a copy of pod
 * use cases
