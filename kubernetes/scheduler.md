@@ -198,7 +198,7 @@ spec:
         image: gcr.io/google_samples/gb-frontend:v3
         resources:
           requests:
-            cpu: 100m
+            cpu: 100m   # 10% of a core
             memory: 100Mi
 ```
 
