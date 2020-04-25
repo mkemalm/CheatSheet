@@ -148,10 +148,3 @@ spec:
 * Where affinities are used on pods to attract them to specific nodes, taints allow our pods to repel a set of nodes. 
 * Taints and toleration are used to ensure pods are not scheduled on inappropriate nodes, and just make sure that the dedicated nodes can be configured for dedicated tasks. 
 * Taints and tolerations have no effect daemonsets
-
-```mermaid
-graph LR
-A --> B;
-B --> C;
-C --> A;
-```
