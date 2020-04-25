@@ -107,7 +107,7 @@ spec:
 * topologyKeys are quite important and offer lots of possibilities. To explore the further possibilities, follow the link on the slide.
 
 #### pod affinity example
-*
+
 ```
 apiVersion: v1
 kind: Pod
@@ -139,4 +139,4 @@ spec:
   - name: with-pod-affinity
     image: k8s.gcr.io/pause:2.0
     ```
-    *
+    
