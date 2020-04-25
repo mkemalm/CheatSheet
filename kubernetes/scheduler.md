@@ -26,10 +26,11 @@ So after filtering out node, scoring is used to evaluate the remaining nodes.
 * custom labels can be used.
 * nodeName can be used as selector, but not recommended. If node doesn't live, can cause problem
 
-* example
+example
 `kubectl label nodes node_name disktype=ssd`
 
-example pod
+pod
+
 ```
 apiVersion: v1
 kind: Pod
