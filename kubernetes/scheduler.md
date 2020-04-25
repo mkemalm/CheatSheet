@@ -45,10 +45,95 @@ spec:
     disktype: ssd
 ```
 
-## affinity
+## Affinity
 
 * more enhanced than nodeSelector
 * two types
 	* node affinity
-	* inter pod affinity
+	* pod affinity
+    * anti pod affinity
+
+### Node Affinity
+
+* like nodeSelector but allows you constain which nodes a Pod is eligible to be scheduled
+* two types
+    * ***requiredDuringSchedulingIgnoredDuringInstallation***, hard restriction, node should met all rules for pod
+    * ***prefferedDuringSchedulingIgnoredDuringExecution***, prefers node that met rules best but not enforcing. a weight may be used to specify how hard it is.
+
+```
+pods/pod-with-node-affinity.yaml 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/e2e-az-name
+            operator: In
+            values:
+            - e2e-az1
+            - e2e-az2
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: another-node-label-key
+            operator: In
+            values:
+            - another-node-label-value
+  containers:
+  - name: with-node-affinity
+    image: k8s.gcr.io/pause:2.0
+```
 	
+### Pod Affinity
+
+* Pod affinity compares labels in pods that need to be scheduled with labels of pods that are already running on a node. And pod anti-affinity is doing the opposite. 
+* The rules are formulated as the pod should run in X if that X is already running one or more pods that meet rule Y. So Y is expressed as a LabelSelector with an optional list of namespaces. And X is a topology domain name like node, or rack or zone and so on, which is expressed by using a ***topologyKey*** which is the key for the node label that the system uses. 
+* So this topology domain name allows you to create logical groups of nodes to manage where the pods are going to run. 
+* Before starting to work with pod affinity, you should note that pod affinity negatively impacts performance in large clusters. 
+* Using pod affinity requires all nodes in the clusters to be labels with a topologyKey
+
+#### topologyKey
+
+* In pod affinity, the topologyKey property plays an important role. 
+* You will use the topologyKey to create logical groups, also known as zones. 
+* Nodes, as well as pods, can be identified with a topologyKey. And a topologyKey can also be used as a unique node identifier. 
+* topologyKeys are quite important and offer lots of possibilities. To explore the further possibilities, follow the link on the slide.
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-pod-affinity
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: security
+            operator: In
+            values:
+            - S1
+        topologyKey: failure-domain.beta.kubernetes.io/zone
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: security
+              operator: In
+              values:
+              - S2
+          topologyKey: failure-domain.beta.kubernetes.io/zone
+  containers:
+  - name: with-pod-affinity
+    image: k8s.gcr.io/pause:2.0
+    ```
