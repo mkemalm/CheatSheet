@@ -41,6 +41,7 @@ Get update strategy of deployment;
 * initContainers spec is used.
 * if initContainers spec is met containers part is executed in yaml.
 
+ü
 ```
 apiVersion: v1
 kind: Pod
