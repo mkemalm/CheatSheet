@@ -170,3 +170,5 @@ spec:
     `kubectl --context=anna-context get pods`
     `kubectl create deployment nginx --image=nginx`
     `kubectl -n staff describe role staff`
+
+* `/etc/kubernetes/admin.conf`should be copied under `.kube` at `home` directory to execute `kubectl` commands as reguler user.
