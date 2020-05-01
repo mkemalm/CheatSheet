@@ -114,21 +114,21 @@ spec:
        `sudo passwd anna` \
        `openssl genrsa -out anna.key 2048` --> create private key \
        `openssl req -new -key anna.key -out anna.csr -subj "/CN=anna/O=staff"` --> create a certificate signing request \
-       `sudo openssl x509 -req -in anna.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out anna.crt -days 180` --> create a certificate signing request to CA \
+       `sudo openssl x509 -req -in anna.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out anna.crt -days 180` --> create a certificate signing request to CA 
    
     3. View and update kubernetes credential files for new user \
        `kubectl config view` \
        `kubectl config set-credentials anna --client-certificate=./anna.crt --client-key=./anna.key` \
-       `kubectl config view` \
+       `kubectl config view` 
    
     4. Create default context for new user \
        `kubectl config set-context anna-context --cluster=kubernetes --namespace=staff --user=anna` \
        `kubectl --context=anna-context get pods` --> will fail because there is no RBAC \
-       `kubectl config get-contexts` \
+       `kubectl config get-contexts` 
    
     5. Configure RBAC to define a staff role \
        `vi staff-role.yaml` \
-       `kubectl create -f staff-role.yaml` \
+       `kubectl create -f staff-role.yaml` 
     
     staff-role.yaml;
 
@@ -146,7 +146,7 @@ spec:
 
     6. Bind user to role \
       `vi rolebind.yaml` \
-      `kubectl create -f rolebind.yaml` \
+      `kubectl create -f rolebind.yaml` 
 
     rolebind.yaml;
 
@@ -169,6 +169,6 @@ spec:
     7. Test it \
       `kubectl --context=anna-context get pods` \
       `kubectl create deployment nginx --image=nginx` \
-      `kubectl -n staff describe role staff` \
+      `kubectl -n staff describe role staff` 
 
 * `/etc/kubernetes/admin.conf`should be copied under `.kube` at `home` directory to execute `kubectl` commands as reguler user.
