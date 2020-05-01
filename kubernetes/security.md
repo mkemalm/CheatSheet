@@ -106,8 +106,8 @@ spec:
 
 * User create example
     1. Create user working environment 
-     * `kubectl create ns staff` 
-     * `kubectl config get-contexts` --> gets current config
+       `kubectl create ns staff` 
+       `kubectl config get-contexts` --> gets current config
    
     2. Create user account
      * `sudo useradd -G wheel anna`
