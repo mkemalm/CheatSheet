@@ -16,11 +16,12 @@
 ```
  sudo apt update
 
- sudo apt install qemu qemu-kvm libvirt-bin  bridge-utils  virt-manager
+ sudo apt-get install qemu qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
 
- sudo service libvirtd start
+ sudo systemctl start libvirtd
 
- sudo update-rc.d libvirtd enable
+ sudo systemctl enable libvirtd
+ 
 ```
 
 * add bridge network
