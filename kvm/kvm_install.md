@@ -15,11 +15,8 @@
 
 ```
  sudo apt update
-
  sudo apt-get install qemu qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
-
  sudo systemctl start libvirtd
-
  sudo systemctl enable libvirtd
  
 ```
