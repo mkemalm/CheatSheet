@@ -4,7 +4,7 @@
 
 **CNI;** Container Network Interface \
 **CSI;** Container Storage Interface \
-**CRI;** Container Runtime Interface \
+**CRI;** Container Runtime Interface
 
 #### CNI
 
