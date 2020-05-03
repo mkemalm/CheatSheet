@@ -2,9 +2,9 @@
 
 * Overlay networking provides pod-to-pod networking
 
-**CNI;** Container Network Interface
-**CSI;** Container Storage Interface
-**CRI;** Container Runtime Interface
+**CNI;** Container Network Interface \
+**CSI;** Container Storage Interface \
+**CRI;** Container Runtime Interface \
 
 #### CNI
 
