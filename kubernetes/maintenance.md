@@ -73,11 +73,11 @@
 
 * Pod states
 
-**Pending,** pod is created in etcd but not started
-**Running,** pod is at healthy state
-**Failed,** one or more containers at pod failed and pod will not start
-**Unknown,** state of pod can't be get, mostly about network issues
-**Succeeded,** pod did it's job
-**Completed,** pod has run to completion
+**Pending,** pod is created in etcd but not started \
+**Running,** pod is at healthy state \
+**Failed,** one or more containers at pod failed and pod will not start \
+**Unknown,** state of pod can't be get, mostly about network issues \
+**Succeeded,** pod did it's job \
+**Completed,** pod has run to completion \
 **CrashLoopBackOff,** one or more container generated error but scheduler is still trying to run it
 
