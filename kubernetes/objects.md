@@ -63,12 +63,14 @@ spec:
 ## Statefulsets
 
 * smilar to deployments but quarentees uniqueness of pods
+* doesn't have replica sets
 * use case
 	* unique network identifiers
 	* stable persistent storage
 	* ordered deployment and scaling
 	* ordered automated rolling updates
 	* storage must be provisioned by persistentvolume
+* all pods in a statefulset has own persistent objects(storage, network...etc.)
 
 ## Daemonset
 

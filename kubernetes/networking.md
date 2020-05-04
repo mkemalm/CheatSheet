@@ -18,3 +18,23 @@
 * Other plugins only have generic settings, and are using additional configuration. 
 * Very frequently, the additional network configuration is implemented by Pods. So if at anytime you're looking at what exactly is happening in the Kubernetes   networking, do have a look at the Kubernetes pods in the kube system, name space as well. Because that might show you some additional information that you need.
 * If you're interested, the generic CNI documentation is on github, in containernetworking/cni
+
+#### Network Plugins
+
+* Provice overlay network
+* Weave, Flannel, Calico ... etc.
+
+#### DNS
+
+* coreDNS pods are responsible from DNS. 
+* kube-dns service ip are located in pod's /etc/resolv.conf
+* kube-dns is at kube-system namespace
+
+`$ kubectl exec -it pod_name -- cat /etc/resolv.conf`
+`$ kubectl exec -it pod_name -- nslookup service_name`
+
+#### Network Policies
+
+* Provides network restrictions between namespaces and services.
+* Flannel doesn't support network policies
+ 
