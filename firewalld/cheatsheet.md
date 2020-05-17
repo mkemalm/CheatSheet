@@ -12,7 +12,7 @@
 
     * Add the forward rule. This example forwards traffic from local port 80 to port 8080 on a remote server located at the IP address: 198.51.100.0 
 
-`$ sudo firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=198.51.100.0`
+    `$ sudo firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=198.51.100.0`
 
 * To reload
 
