@@ -1,3 +1,8 @@
+#### SELinux utilities
+
+sudo yum install policycoreutils policycoreutils-python setools setools-console setroubleshoot selinux-policy-devel
+
+
 #### Every objects has 3 context labels
 
 * user
