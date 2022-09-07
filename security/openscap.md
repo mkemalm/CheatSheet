@@ -38,7 +38,7 @@ For example for RHEL;
 
 For Ubuntu;
 
-`wget -O - https://security-metadata.canonical.com/oval/com.ubuntu.$(lsb_release -cs).usn.oval.xml.bz2 | bzip2 --decompress > ubuntu-2004.oval.xml``
+`wget -O - https://security-metadata.canonical.com/oval/com.ubuntu.$(lsb_release -cs).usn.oval.xml.bz2 | bzip2 --decompress > ubuntu-2004.oval.xml`
 
 Let's scan
 
