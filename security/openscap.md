@@ -42,6 +42,6 @@ For Ubuntu;
 
 Let's scan
 
-`oscap oval eval --report vulnerability.html rhel-7.oval.xml``
+`oscap oval eval --report vulnerability.html rhel-7.oval.xml`
 
 This will generate report.html, you can download and browse it.
